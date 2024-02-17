@@ -1,18 +1,18 @@
 <script>
-    import { select_options } from "svelte/internal";
+    import { construct_svelte_component, select_options } from "svelte/internal";
     import Footer from "./Components/Footer.svelte";
     import MathQuestions from "./Components/Game Components/MathQuestions.svelte";
     import Score from "./Components/Game Components/Score.svelte";
     import StartButton from "./Components/Game Components/StartButton.svelte";
     import Header from "./Components/Header.svelte";
     import Option from "./Components/Option.svelte";
-
     let ScoreCount=0;
     let showOption=false;
     let startGame = false;
     let start=true;
     let highScore=0;
     let answer;
+    let lifeCount=3,heart1,heart2,heart3;
     let question1,option1,option2,option3;
     let question2;
     let operator;
@@ -20,6 +20,15 @@
     let correct;
     let isCorrect;
     let isWrong;
+
+    const mainStartBtn=()=>{
+        lifeCount=3;
+        heart1=true;
+        heart2=true;
+        heart3=true;
+        startBtn();
+    }
+
 
     const startBtn=()=>{
         isCorrect=false;
@@ -39,6 +48,34 @@
         start=true;
         stop=false;
         
+    }
+    const wrongbtn = ()=>{
+
+        if(lifeCount!=1){
+            switch (lifeCount) {
+                case 3:
+                    heart3=false;
+                    break;
+                case 2:
+                    heart2=false;
+                    break;
+                default:
+                    break;
+            }
+        isCorrect=false;
+        isWrong=false;
+        showOption=true;
+        startGame=true;
+        start=false;
+        stop=true;
+        lifeCount--;
+        questions();
+        options();
+    }
+        else{
+            heart1=false;
+            stopBtn();
+        }
     }
 
     const questions =()=>{   
@@ -116,18 +153,25 @@ const changeQuestion=() =>{
     }
     else{
         isWrong=true;
-        setTimeout(stopBtn,500);
+        setTimeout(wrongbtn,500);
     }
 }
 </script>
-
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 <Header/>
+<div class="lives">
+    <i class="fa-solid fa-heart" class:red={heart1}></i>
+    <i class="fa-solid fa-heart" class:red={heart2}></i>
+    <i class="fa-solid fa-heart" class:red={heart3}></i>
+</div>
 <main>
     <div class="playScreen">
         <div class="board">
             <Score {ScoreCount} {highScore}/>
             {#if start==true}
-                    <StartButton on:click={startBtn} {start} {stop}>
+                    <StartButton on:click={mainStartBtn} {start} {stop}>
                         Start Game
                     </StartButton>
                 {:else}
@@ -152,6 +196,13 @@ const changeQuestion=() =>{
 <Footer/>
 
 <style>
+    .lives{
+        text-align: center;
+        font-size: 2rem;
+    }
+    .red{
+        color:red;
+    }
     .playScreen{
         height: 75vh;
         position: relative;

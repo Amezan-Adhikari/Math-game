@@ -7,13 +7,13 @@ html, body {
 }
 @font-face {
 	font-family: poppins;
-	src: url(/public/fonts/Poppins-ExtraLight.ttf);
+	src: url(./fonts/Poppins-ExtraLight.ttf);
 }
 body {
 	color: #333;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: poppins,BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 a {
