@@ -162,7 +162,7 @@ const changeQuestion=() =>{
         top: 50%;
         transform: translate(-50%,-50%);
         height:90%;
-        width: 70%;
+        width: 90%;
         background-color: #f7f7f7;
         border-radius: 20px;
     }

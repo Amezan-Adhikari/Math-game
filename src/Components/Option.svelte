@@ -36,12 +36,13 @@ const letdispatch = ()=>{
 
 <style>
     div{
-        margin-top: 10%;
+        margin-top: 150px;
         display: flex;
         justify-content: space-evenly;
     }
     button{
         font-size:1.5rem;
+        font-weight: lighter;
         height: 140px;
         aspect-ratio: 1;
         border-radius: 50%;
@@ -58,5 +59,13 @@ const letdispatch = ()=>{
     }
     .wrong{
         background-color: red;
+    }
+    @media screen and (max-width:700px){
+        button{
+            height:70px;
+        }
+        button:hover{
+            height: 70px;
+        }
     }
 </style>

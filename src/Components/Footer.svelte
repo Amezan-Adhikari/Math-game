@@ -14,4 +14,9 @@
         width: max-content;
         border-top:1px solid black;
     }
+ @media screen and (max-width:700px){
+    footer{
+        display:none;
+    }
+ }
 </style>

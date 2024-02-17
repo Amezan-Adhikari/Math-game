@@ -9,6 +9,7 @@ export let start = true;
 
 <style>
     .start{
+        cursor: pointer;
         position:absolute;
         top: 50%;
         left: 50%;
@@ -22,6 +23,7 @@ export let start = true;
         background-color: rgb(22, 228, 125);
     }
     .stop{
+        cursor: pointer;
         position:absolute;
         top: 5%;
         right:5%;
@@ -36,4 +38,12 @@ export let start = true;
         background-color: transparent;
 
     }
+ @media screen and (max-width:500px){
+    .stop{
+        width: max-content;
+    }
+    .start{
+        font-size: 2rem;
+    }
+ }
 </style>

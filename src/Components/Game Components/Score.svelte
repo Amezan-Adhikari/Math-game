@@ -5,7 +5,8 @@
 
 
 <div>
-    <p>HighScore:{highScore} <span>Score : {ScoreCount} </span></p>
+    
+    <p>HighScore:{highScore} <br><span>Score : {ScoreCount} </span></p>
 </div>
 
 <style>
@@ -13,17 +14,23 @@
         position: absolute;
         font-size: 2rem;
         padding:0rem;
-        height: 5rem;
+        height: 6rem;
         width:100%;
         border-top-right-radius: 20px;
         border-top-left-radius: 20px;
         background-color: blanchedalmond;
     }
-    span{
-        float: right;
-        margin-right: 45%;
-    }
     p{
         margin: 10px;
+    }
+    @media screen and (max-width:700px){
+        
+        span{
+            float:none;
+        }
+        p{
+            width:50%;
+            font-size: 1.5rem;
+        }
     }
 </style>
